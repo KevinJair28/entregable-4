@@ -22,7 +22,7 @@ function App() {
   const getUsers = () => {
     axios.get(`https://users-crud.academlo.tech/users/`)
       .then(res => setUserList(res.data));
-      closeForm(!true)
+      closeForm(true)
   }
 
   const selectUsers = (users) => {
@@ -33,6 +33,7 @@ function App() {
 
   const deselectUser = () => {
     setUserSelected(null);
+    
   }
 
   const deleteUser = (id) => {
@@ -52,9 +53,9 @@ function App() {
       
       <div className='create_users'>
         <h1>Users <i class="fa-solid fa-user"></i></h1>
-        <button className='button-new_user' onClick={selectUsers}><h3>+ add new user</h3></button>
+        <button className='button-new_user' onClick={openForm}><h3>+ add new user</h3></button>
       </div>
-      <UserModal isOpen={isOpenForm} closeModal={closeForm} selectUsers={isOpenForm} deselectUser={closeForm}>
+      <UserModal isOpen={isOpenForm} closeModal={closeForm} selectUsers={isOpenForm}>
       <UserForm
             getUsers={getUsers}
             userSelected={userSelected}

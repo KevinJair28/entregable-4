@@ -13,7 +13,7 @@ const initialValue = {
     birthday: ""
 }
 
-const UserForm = ({ getUsers, userSelected, deselectUser }) => {
+const UserForm = ({ getUsers, userSelected, deselectUser}) => {
 
     const { handleSubmit, register, reset } = useForm();
 
@@ -37,22 +37,21 @@ const UserForm = ({ getUsers, userSelected, deselectUser }) => {
                 .catch(error => console.log(error.response?.data));
         } else {
             axios.post(`https://users-crud.academlo.tech/users/`, data)
-                .then(() => getUsers())
+              .then(() => getUsers())
                 .catch(error => console.log(error.response?.data));
                 
         }
 
     }
 
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(true)
 
     const showPassword = () => {
         //alert("mostrando password..")
         setVisible(!visible)
     }
 
-    const [isOpenCreate, openCreate, closeCreate] = useModal(false)
-    const [closeForm] = useModal(false)
+    const [isOpenForm, openForm, closeForm] = useModal(false)
 
     return (
         <div className='formulary'>
